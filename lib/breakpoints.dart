@@ -1,0 +1,3 @@
+
+
+const mobileBreakpoint = 800;

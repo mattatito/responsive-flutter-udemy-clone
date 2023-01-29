@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_responsivity/breakpoints.dart';
 import 'package:flutter_responsivity/pages/home/widgets/mobile_app_bar.dart';
+import 'package:flutter_responsivity/pages/home/widgets/sections/top_section.dart';
 import 'package:flutter_responsivity/pages/home/widgets/web_app_bar.dart';
 
 class HomePage extends StatelessWidget {
@@ -9,22 +11,35 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       return Scaffold(
-        appBar: constraints.maxWidth < 800
+        appBar: constraints.maxWidth < mobileBreakpoint
             ? const PreferredSize(
-                child: MobileAppBar(),
                 preferredSize: Size(
                   double.infinity,
                   56,
                 ),
+                child: MobileAppBar(),
               )
             : const PreferredSize(
-                child: WebAppBar(),
                 preferredSize: Size(
                   double.infinity,
                   72,
                 ),
+                child: WebAppBar(),
               ),
-        drawer: Drawer(),
+        drawer: constraints.maxWidth < mobileBreakpoint ? Drawer() : null,
+        body: Align(
+          alignment: Alignment.center,
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: 1400,
+            ),
+            child: ListView(
+             children: [
+               TopSection()
+             ],
+            ),
+          ),
+        ),
       );
     });
   }
