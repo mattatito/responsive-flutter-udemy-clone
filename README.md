@@ -7,7 +7,7 @@
 =================
 
 This app is a udemy clone. Created just for apply flutter responsive knowledge.
-In this project, you'll find an app created with helps of breakpoints
+In this project, you'll find an app created with helps of breakpoints.
 In development I've used [FVM](https://fvm.app/)
 
 
