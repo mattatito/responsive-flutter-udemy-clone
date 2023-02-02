@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_responsivity/breakpoints.dart';
 import 'package:flutter_responsivity/pages/home/widgets/mobile_app_bar.dart';
+import 'package:flutter_responsivity/pages/home/widgets/sections/advantage_section.dart';
+import 'package:flutter_responsivity/pages/home/widgets/sections/courses_section.dart';
 import 'package:flutter_responsivity/pages/home/widgets/sections/top_section.dart';
 import 'package:flutter_responsivity/pages/home/widgets/web_app_bar.dart';
 
@@ -11,6 +13,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       return Scaffold(
+        backgroundColor: Colors.black,
         appBar: constraints.maxWidth < mobileBreakpoint
             ? const PreferredSize(
                 preferredSize: Size(
@@ -30,12 +33,14 @@ class HomePage extends StatelessWidget {
         body: Align(
           alignment: Alignment.center,
           child: ConstrainedBox(
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               maxWidth: 1400,
             ),
             child: ListView(
-             children: [
-               TopSection()
+             children: const [
+               TopSection(),
+               AdvantageSection(),
+               CoursesSection(),
              ],
             ),
           ),
